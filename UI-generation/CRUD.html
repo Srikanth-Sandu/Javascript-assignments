@@ -1,0 +1,140 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <label>Name:</label>
+        <input id="pname" type="text"><br><br>
+
+        <label>Gender:</label>
+        <input id="pgender" type="text"><br><br>
+
+        <label>Age:</label>
+        <input id="page" type="text"><br><br>
+
+        <label>City:</label>
+        <input id="pcity" type="text"><br><br>
+
+        <button id="addbutton" onclick="add()">Add Person</button>
+        <button id="upbutton" onclick="update()">Update</button><br/><br/>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tbd">
+
+            </tbody>
+        </table>
+        <script>
+            var newname = document.getElementById('pname');
+            var gender = document.getElementById('pgender');
+            var age = document.getElementById('page');
+            var city = document.getElementById('pcity');
+
+            var addpbutton=document.getElementById('addbutton');
+            var uppbutton=document.getElementById('upbutton');
+
+            var tablebody = document.getElementById('tbd');
+
+            var persons=[];
+            var editindex;
+
+            function add(){
+                var person = {
+                    Name:newname.value,
+                    Gender:gender.value,
+                    Age:age.value,
+                    City:city.value
+                }
+                persons.push(person);
+
+                genUI(persons);
+
+                newname.value='';
+                gender.value='';
+                age.value='';
+                city.value='';
+                
+            }
+
+            function genUI(arr){
+                tablebody.innerHTML='';
+                arr.forEach(function(persn,ind){
+
+                var newtr=document.createElement('tr');
+
+                var td1=document.createElement('td');
+                td1.innerHTML=persn.Name;
+                newtr.appendChild(td1);
+
+                var td2=document.createElement('td');
+                td2.innerHTML=persn.Gender;
+                newtr.appendChild(td2);
+
+                var td3=document.createElement('td');
+                td3.innerHTML=persn.Age;
+                newtr.appendChild(td3);
+
+                var td4=document.createElement('td');
+                td4.innerHTML=persn.City;
+                newtr.appendChild(td4);
+
+                var td5=document.createElement('td');
+                var editbtn=document.createElement('button');
+                editbtn.innerHTML='Edit';
+                td5.appendChild(editbtn);
+                editbtn.onclick=function(){
+                    newname.value=persn.Name;
+                    gender.value=persn.Gender;
+                    age.value=persn.Age;
+                    city.value=persn.City;
+                    editindex=ind;
+
+                    addpbutton.style.display='none';
+                    uppbutton.style.display='inline-block';
+
+                }
+
+                var delbtn=document.createElement('button');
+                delbtn.innerHTML='Delete';
+                td5.appendChild(delbtn);
+                delbtn.onclick=function(){
+                    arr.splice(ind,1);
+                    genUI(arr);
+                }
+                newtr.appendChild(td5);
+
+                tablebody.appendChild(newtr);
+
+                })
+                
+            }
+
+            function update(){
+                var newpersn={
+                    Name:newname.value,
+                    Gender:gender.value,
+                    Age:age.value,
+                    City:city.value
+                }
+                persons[editindex]=newpersn;
+                genUI(persons);
+                newname.value='';
+                gender.value='';
+                age.value='';
+                city.value='';
+                addpbutton.style.display='inline-block';
+                uppbutton.style.display='none';
+
+
+            }
+            uppbutton.style.display='none';
+        </script>
+    </body>
+</html>

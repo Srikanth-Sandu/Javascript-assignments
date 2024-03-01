@@ -1,0 +1,174 @@
+<!-- creating a list of given names -->
+<!-- <html>
+    <head></head>
+    <body>
+        <label>Name:<input id="name" type="text"></label>
+        <button onclick="add()">Add Name</button>
+        <ul id="nlist"></ul>
+        <script>
+            var names=[];
+         function add(){
+            let name= document.getElementById('name').value;
+            names.push(name);
+            var list= document.getElementById('nlist');
+            list.innerHTML="";
+            names.forEach(function(nm){
+            var newli= document.createElement('li');
+            newli.innerHTML=nm;
+            list.append(newli);
+        })
+         }
+        </script>
+    </body>
+</html> -->
+<!-- creating a table from object of a person details -->
+<!-- <html>
+
+<head></head>
+<body>
+    <label>Name:</label>
+    <input id="name" type="text"><br><br>
+    <label>Age:</label>
+    <input id="age" type="text"><br><br>
+    <button onclick="addperson()">Add person</button><br><br>
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Age</th>
+        </thead>
+        <tbody id='tb'>
+
+        </tbody>
+    </table>
+    <script>
+        var pname= document.getElementById("name");
+        var page= document.getElementById("age");
+        var Table= document.getElementById('tb');
+        console.log(Table)
+        var persons=[];
+        function addperson(){
+            var person={
+                personName:pname.value,
+                personAge:page.value
+            }
+            persons.push(person);
+            Table.innerHTML="";
+            persons.forEach(function(person){
+                var Newtr=document.createElement('tr');
+                Table.append(Newtr);
+                var Newtd1=document.createElement('td');
+                var Newtd2=document.createElement('td');
+                Newtr.append(Newtd1);
+                Newtr.append(Newtd2);
+                Newtd1.innerHTML=person.personName;
+                Newtd2.innerHTML=person.personAge;
+            })
+        }
+    </script>
+</body>
+</html> -->
+<!--form handling in javascript dom -->
+<!-- <html>
+    <head></head>
+    <body>
+        <form name="studentForm" onsubmit="event.preventDefault()">
+            <div>
+                <label>firstname:</label><input name="firstname" type="text">
+            </div>
+            <div>
+                <label>lastname:</label><input name="lastname" type="text">
+            </div>
+            <div>
+                <label>gender:</label>
+                <input type="radio" name="gender" value="male">male
+                <input type="radio" name="gender" value="female">female
+                <input type="radio" name="gender" value="others">others
+            </div>
+            <div>
+                <label>languages:</label>
+                <input type="checkbox" name="languages" value="telugu">telugu
+                <input type="checkbox" name="languages" value="english">english
+                <input type="checkbox" name="languages" value="hindi">hindi
+                <input type="checkbox" name="languages" value="spanish">spanish
+                <input type="checkbox" name="languages" value="french">french
+            </div>
+            <div>
+                <label>nationality:</label>
+                <select name="nationality">
+                    <option disabled selected>please select</option>
+                    <option>India</option>
+                    <option>China</option>
+                    <option>USA</option>
+                    <option>other</option>
+                </select>
+            </div>
+            <button onclick="save()">save</button>
+            
+        </form>
+        <table border="1">
+            <thead>
+                <th>FirstName</th>
+                <th>lastName</th>
+                <th>Gender</th>
+                <th>Languages</th>
+                <th>Nationality</th>
+            </thead>
+            <tbody id="tb">
+
+            </tbody>
+        </table>
+        <script>
+        var students=[];
+
+            function save(){ 
+                var lang=[];
+               for(var i=0;i<=studentForm.languages.length-1;i++){
+                if(studentForm.languages[i].checked===true){
+                    lang.push(studentForm.languages[i].value)
+                }
+               }
+                
+                var student={
+                    Firstname:studentForm.firstname.value,
+                    Lastname:studentForm.lastname.value,
+                    Gender:studentForm.gender.value,
+                    Languages:lang,
+                    Nationality:studentForm.nationality.value
+                }
+                students.push(student);
+
+                getUI();
+            }
+
+
+            function getUI(){
+                var tbd=document.getElementById('tb');
+                tbd.innerHTML="";
+                students.forEach(function(stud){
+                    var newtr=document.createElement("tr");
+                    tbd.appendChild(newtr)
+                    newtd1=document.createElement('td')
+                    newtr.appendChild(newtd1);
+                    newtd1.innerHTML=stud.Firstname;
+
+                    newtd2=document.createElement('td')
+                    newtr.appendChild(newtd2);
+                    newtd2.innerHTML=stud.Lastname;
+
+                    newtd3=document.createElement('td')
+                    newtr.appendChild(newtd3);
+                    newtd3.innerHTML=stud.Gender;
+
+                    newtd4=document.createElement('td')
+                    newtr.appendChild(newtd4);
+                    newtd4.innerHTML=stud.Languages;
+
+                    newtd5=document.createElement('td')
+                    newtr.append(newtd5);
+                    newtd5.innerHTML=stud.Nationality;
+                })
+            }
+        </script>
+    </body>
+</html> -->
+<!--  -->

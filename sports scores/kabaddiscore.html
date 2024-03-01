@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <style>
+        #md{
+            display: flex;
+            justify-content: space-around;
+            background-color: aqua;
+            margin: 0;
+        }
+        h1{
+            text-align: center;
+            background-color:burlywood
+        }
+        h2 {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style=color:rgb(204,50,165)>Pro Kabaddi League</h1>
+    <div id="md">
+        <div>
+            <h1 style=color:red>Telugu Titans</h1>
+            <h2>Score:<span id="tt"></span></h2>
+            <button onclick=incte()>Increment</button>
+            <button onclick=decte()>Decrement</button>
+        </div>
+        <div>
+            <h1 style=color:rgb(25,161,12)>Tamil Thalivas</h1>
+            <h2>Score:<span id="th"></span></h2>
+            <button onclick=incth()>Increment</button>
+            <button onclick=decth()>Decrement</button>
+        </div>
+    </div>
+
+    <script>
+        var a = 0;
+        var b = 0;
+        document.getElementById("tt").innerHTML = a;
+        document.getElementById("th").innerHTML = b;
+        function incte() {
+            a++;
+            document.getElementById("tt").innerHTML = a;
+        }
+        function decte() {
+            a--;
+            document.getElementById("tt").innerHTML = a;
+        }
+        function incth() {
+            b++;
+            document.getElementById("th").innerHTML = b;
+        }
+        function decth() {
+            b--;
+            document.getElementById("th").innerHTML = b;
+        }
+    </script>
+</body>
+
+</html>

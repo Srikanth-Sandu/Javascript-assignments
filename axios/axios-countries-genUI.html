@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style></style>
+</head>
+
+<body>
+    <h1>All countries details</h1>
+    <button onclick="sortAsc()">A-Z</button>
+    <button onclick="sortDsc()">Z-A</button>
+    <input type="text" id="searchbox" onkeyup="search()">
+    <table border=1px>
+        <thead>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Area</th>
+            <th>Population</th>
+            <th>Flags</th>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+    <script>
+        var countries = [];
+        axios.get('https://restcountries.com/v3.1/all').then(function (response) {
+            countries = response.data;
+            console.log(countries);
+            genTable(countries);
+        })
+
+
+        function genTable(arr) {
+            var tb1 = document.getElementById('tb');
+             tb1.innerHTML="";
+            var i=1;
+            arr.forEach(function (country) {
+                var tr1 = document.createElement('tr');
+                tb1.appendChild(tr1);
+
+                var td6=document.createElement('td');
+                tr1.appendChild(td6);
+                td6.innerHTML=i;
+                i=i+1;
+
+                var td1 = document.createElement('td');
+                tr1.appendChild(td1);
+                td1.innerHTML = country.name.common;
+
+                var td2 = document.createElement('td');
+                tr1.appendChild(td2);
+                td2.innerHTML = country.capital
+
+                var td3 = document.createElement('td');
+                tr1.appendChild(td3);
+                td3.innerHTML = country.area
+
+                var td4 = document.createElement('td');
+                tr1.appendChild(td4);
+                td4.innerHTML = country.population
+
+                var td5 = document.createElement('td');
+                tr1.appendChild(td5);
+                var img1 = document.createElement('img');
+                td5.appendChild(img1);
+                img1.src = country.flags.png;
+                img1.style.width = "50px";
+                img1.style.heigth = '30px';
+            })
+        }
+
+        function sortAsc() {
+            countries.sort(function(a,b){
+                var fn1=a.name.common.toLowerCase();
+                var fn2=b.name.common.toLowerCase();
+                if(fn1>fn2){
+                    return 1
+                }
+                else{
+                    return -1
+                }
+            })
+            genTable(countries);
+        }
+
+        function sortDsc() {
+            countries.sort(function(a,b){
+                var fn1=a.name.common.toLowerCase();
+                var fn2=b.name.common.toLowerCase();
+                if(fn1<fn2){
+                    return 1
+                }
+                else{
+                    return -1
+                }
+            })
+            genTable(countries);
+        }
+
+        function search(){
+            searchinput=document.getElementById('searchbox');
+            var filteredcountries= countries.filter(function(country){
+                return country.name.common.toLowerCase().startsWith(searchinput.value.toLowerCase());
+            })
+            genTable(filteredcountries);
+        }
+    </script>
+</body>
+
+</html>

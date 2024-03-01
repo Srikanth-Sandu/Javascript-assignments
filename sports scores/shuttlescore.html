@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <style>
+        #md{
+            display:flex;
+            justify-content: space-around;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Shuttle Premier League</h1>
+    <div id="md">
+        <div>
+            <h1>Telangana</h1>
+            <h2>Score:<span id="ts"></span><span id="tss"></span></h2>
+            <button onclick=incts()>Increment</button>
+            <button onclick=dects()>Decrement</button>
+        </div>
+        <div>
+            <h1>Andhra</h1>
+            <h2>Score:<span id="ap"></span><span id="aps"></span></h2>
+            <button onclick=incap()>Increment</button>
+            <button onclick=decap()>Decrement</button>
+        </div>
+    </div>
+    <script>
+        var a=0;
+        var b=0;
+        document.getElementById("ts").innerHTML=a;
+        document.getElementById("ap").innerHTML=b;
+        function incts(){
+            a++;
+            document.getElementById("ts").innerHTML=a;
+            document.getElementById("tss").innerHTML="&#10094";
+            document.getElementById("aps").innerHTML="";
+        }
+        function dects(){
+            a--;
+            document.getElementById("ts").innerHTML=a;
+            document.getElementById("aps").innerHTML="&#10094";
+            document.getElementById("tss").innerHTML=""
+
+        }
+        function incap(){
+            b++;
+            document.getElementById("ap").innerHTML=b;
+            document.getElementById("aps").innerHTML="&#10094";
+            document.getElementById("tss").innerHTML=""
+        }
+        function decap(){
+            b--;
+            document.getElementById("ap").innerHTML=b;
+            document.getElementById("tss").innerHTML="&#10094";
+            document.getElementById("aps").innerHTML="";
+        }
+    </script>
+
+</body>
+
+</html>

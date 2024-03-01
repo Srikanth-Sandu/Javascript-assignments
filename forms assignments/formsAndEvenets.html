@@ -1,0 +1,43 @@
+<!-- enable text box -->
+<!-- <html>
+    <head></head>
+    <body>
+
+        <input id="textbox" disabled type="text">
+        <button id="enbtn">Enable the textbox</button>
+        <script>
+            var textbox=document.getElementById('textbox');
+            var enbtn=document.getElementById('enbtn');
+            enbtn.onclick=function(){
+                textbox.disabled=false;
+            }
+        </script>
+    </body>
+</html> -->
+<!-- events forms validation error message -->
+<html>
+    <head></head>
+    <body>
+        <form onclick=Event.preventDefault()>
+            <label>first name:</label><input id="ip1" required title="The above field is madatory"  type="text"><br/>
+            <p id="error">**This field is mandatory</p>
+            <label>middle name:</label><input type="text"><br/>
+            <label>last name:</label><input type="text"><br/>
+            <button onclick="myfunction()">Update</button>
+    </form>
+        <script>
+            function myfunction(){
+                var txt=document.getElementById('ip1');
+                var txtLen=txt.length;
+                var errormsg=document.getElementById('error');
+                if(txtLen===0){
+                    errormsg.innerHTML='**This field is mandatory';
+                }
+                else{
+                    errormsg.innerHTML='';
+                    txt=txtLen;
+                }
+            }
+        </script>
+    </body> 
+</html>
